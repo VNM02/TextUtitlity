@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar.js";
 import TextFrom from "./components/TextForm";
 import About from './components/About';
 let name="Vaibhav Mahajan"
+import React , {useState} from 'react'
+
 function App() {
   return (
     <>

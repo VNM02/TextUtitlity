@@ -26,6 +26,12 @@ export default function TextForm(props) {
 		console.log("Changed");
 		setText(event.target.value)           // text=settext              // this implies that whatever text is entered in the textbox is saved in the text  variable
 	}
+	const CopyText=(event)=>{
+		console.log("Text Has Been Copied");
+		var t=document.getElementById("myBox");
+		t.select();
+		navigator.clipboard.writeText(t.value);
+	}
 	const [text, setText] = useState('Enter The Text Here');
   return (
 	<>
@@ -39,6 +45,7 @@ export default function TextForm(props) {
 	<button className="btn btn-primary mx-2" onClick={ChangeToDown}>Convert To LowerCase</button>
 	<button className="btn btn-primary mx-2" onClick={TrimText}>Trim the paragraph</button>
 	<button className="btn btn-primary mx-2" onClick={ClearText}>Clear the paragraph</button>
+	<button className="btn btn-primary mx-2" onClick={CopyText}>Copy The Paragraph</button>
 	</div>
 	<div className="container my-3">
 		<h1>Text Summary</h1>
