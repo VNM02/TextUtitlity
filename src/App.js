@@ -5,6 +5,12 @@ import Navbar from "./components/Navbar.js";
 import TextFrom from "./components/TextForm";
 import About from './components/About';
 import Alert from "./components/Alert.js" ;
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 let name="Vaibhav Mahajan"
 
 
@@ -26,24 +32,41 @@ function App() {
       setMode('dark')
       showAlert("Dark mode enabled","success");
       // document.body.style.backgroundColor='grey';
+      document.title='TextUtils- Dark Mode';
     }
     else
     {
       setMode('light')
      // document.body.style.backgroundColor='light';
       showAlert("Normal mode enabled","success")
+      document.title='TextUtils- Light Mode';
     }
   }
   
   return (
     <>
-<Navbar title="TextUtils" about="About" toggleMode={toggleMode} mode={mode}/>
+    <Router>
+    <Navbar title="TextUtils" about="About" toggleMode={toggleMode} mode={mode}/>
 <Alert alert={alert}/>
 <div className="container my-3" >
 {/* <About></About>     */}
-<TextFrom heading="Text Box" mode={mode} showAlert={showAlert} />
-</div>
 
+<Switch>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          
+          <Route eaxct path="/">
+          <TextFrom heading="Text Box" mode={mode} showAlert={showAlert} />
+          </Route>
+
+        </Switch>
+
+          
+          
+
+    </div>
+    </Router>
     </>
   );
 }
