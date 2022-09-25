@@ -44,20 +44,20 @@ export default function TextForm(props) {
   <div className="mb-3">
     {/* <label for="myBox">{props.heading}</label> */}
     <textarea className="form-control" value={text} style={{
-		backgroundColor: props.mode==='dark'?'grey':'light',
+		backgroundColor: props.mode==='dark'?'lightblue':'light',
 
 	}} onChange={ChangedText} id="myBox" rows="8"></textarea>
   </div>
-	<button className="btn btn-primary mx-2" onClick={ChangeToUp}>Convert To UpperCase</button>
-	<button className="btn btn-primary mx-2" onClick={ChangeToDown}>Convert To LowerCase</button>
-	<button className="btn btn-primary mx-2" onClick={TrimText}>Trim the paragraph</button>
-	<button className="btn btn-primary mx-2" onClick={ClearText}>Clear the paragraph</button>
-	<button className="btn btn-primary mx-2" onClick={CopyText}>Copy The Paragraph</button>
+	<button className="btn btn-primary mx-2 my-1" onClick={ChangeToUp}>Convert To UpperCase</button>
+	<button className="btn btn-primary mx-2 my-1" onClick={ChangeToDown}>Convert To LowerCase</button>
+	<button className="btn btn-primary mx-2 my-1" onClick={TrimText}>Trim the paragraph</button>
+	<button className="btn btn-primary mx-2 my-1" onClick={ClearText}>Clear the paragraph</button>
+	<button className="btn btn-primary mx-2 my-1" onClick={CopyText}>Copy The Paragraph</button>
 	</div>
 	<div className="container my-3" >
 		<h1>Text Summary</h1>
-		<p>The entered paragraph has {text.split(" ").length} words and {text.length} characters</p>    {/* /// {text.split()} == it is an array */}
-		<p>{0.008 * text.split(" ").length} are the minutes required to read the full text</p>
+		<p>The entered paragraph has {text.split(/s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>    {/* /// {text.split()} == it is an array */}
+		<p>{0.008 * text.split(/s+/).filter((element)=>{return element.length!==0}).length} are the minutes required to read the full text</p>
 	</div>
 	</>
   )
@@ -70,3 +70,5 @@ export default function TextForm(props) {
 
 
 // 	}}
+
+// text.split(" ").filter((element)=>{return element.length!==0}).length
